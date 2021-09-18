@@ -1,0 +1,57 @@
+##Kth largest number
+
+Write a method called kthLargest that accepts an integer k and an array arr as its parameters and returns the element such that k elements have greater or equal value. If k = 0, return the largest element; if k = 1, return the second largest element, and so on.
+
+For example, if the array passed contains the values {74, 85, 102, 99, 101, 56, 84} and the integer k passed is 2, your method should return 99 because there are two values at least as large as 99 (101 and 102).
+
+Assume that 0 <= k < length of array.
+Input Format
+
+First line contains the number of test cases i.e. T
+Each test case T contains the integer K (In first line), the number of elements in array N (In 2nd line) and N integers will follow.
+Output Format
+
+Print the kth largest number from array.
+Sample Input
+
+1 // Number of Testcases
+1 // K
+3 // Size of Array
+1 // Elements of Array
+2
+3
+Sample Output
+
+2
+
+$$Coding
+
+static int kthLargest(int arr[], int size, int k){
+  // Write your code here
+ // Arrays.sort(arr);
+  //int t=0;
+  for(int i=0;i<size-1;i++)
+  {
+    for(int j=0;j<size-i-1;j++)
+    {
+      if(arr[j]>arr[j+1]){
+        int t=arr[j];
+      arr[j]=arr[j+1];
+      arr[j+1]=t;
+      }
+    }
+  }
+   if(size==0 || size==1)
+    return size;
+  int temp[]=new int[size];
+  int j=0;
+  for(int i=0;i<size-1;i++)
+  {
+		if(arr[i]!=arr[i+1])
+          temp[j++]=arr[i];
+  }
+  temp[j++]=arr[size-1];
+  for(int i=0;i<j;i++)
+    arr[i]=temp[i];
+  return arr[size-k-1];
+}
