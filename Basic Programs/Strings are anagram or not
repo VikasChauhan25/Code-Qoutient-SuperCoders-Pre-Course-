@@ -1,0 +1,66 @@
+##Strings are anagram or not 
+
+Two strings A and B are called anagrams if they contain all the same characters in the same frequencies. Given two strings, find whether both are anagram of each other or not.
+
+Complete the function isAnagram() that will take two strings as parameters and return 1 if they are anagram and return 0 otherwise.
+
+Input Format
+
+The first line of input contains an integer T denoting the no of test cases . Then T test cases follow. 
+Each test case contains two strings str1, str2 in two lines. 
+Output Format
+
+For each test case, print Yes or No in new lines.
+Sample Input
+
+3
+act
+cat
+CodeQuotient
+QuotientCode
+Hello
+Hillo
+Sample Output
+
+Yes
+Yes
+No
+
+##Coding
+
+static int isAnagram(String s1, String s2){
+  // Write your code here
+   		String copyOfs1 = s1.replaceAll("\\s", "");
+        String copyOfs2 = s2.replaceAll("\\s", "");
+        boolean status = true;
+        if(copyOfs1.length() != copyOfs2.length())
+        {
+            status = false;
+        }
+        else
+        {
+            char[] s1Array = copyOfs1.toCharArray();
+            StringBuilder sb = new StringBuilder(copyOfs2);
+            for (char c : s1Array)
+            {
+                int index = sb.indexOf(""+c);
+                if (index != -1)
+                {
+                    sb = sb.deleteCharAt(index);
+                }
+                else
+                { 
+                    status = false;
+                    break;
+                }
+            }
+        }
+        if(status)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
