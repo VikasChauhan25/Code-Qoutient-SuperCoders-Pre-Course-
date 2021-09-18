@@ -1,0 +1,121 @@
+#Reverse a string using stack
+Given a string, the task is to reverse the string using stack data structure.
+
+Complete the function reverseString() that accepts the string, and reverses the string.
+
+Input Format
+
+The first line of input will contains an integer T denoting the no of test cases. Then T test cases follow. 
+Each test case contains a number N.
+Then N strings follow which are to be reversed
+Output Format
+
+For each test case, you have to reverse the string in the array given. You are required to complete the methods given only.
+Constraints
+
+1 <= T <= 10
+﻿0 <= N <= 100
+Given strings consist of uppercase and lowercase English letters.
+Sample Input
+
+1 // No. of test cases
+2 // No. of strings
+CodeQuotient
+Code
+Sample Output
+
+tneitouQedoC
+edoC﻿
+
+##CODING
+
+import java.util.*;
+
+class CQStack
+{
+  public int maxSize; // size of stack array
+  public int[] stackArray;
+  public int top; // top of stack
+
+  public CQStack(int s) // constructor
+  {
+    maxSize = s; // set array size
+    stackArray = new int[maxSize]; // create array
+    top = -1; // no items yet
+  }
+  public void push(int j) // put item on top of stack
+  {
+    if(isFull())
+    {
+      return;
+    }
+    else
+    {
+      stackArray[++top] = j; // increment top, insert item
+    }
+  }
+  public int pop() // take item from top of stack
+  {
+    if (isEmpty())
+    {
+      return -1;
+    }
+    else
+    {
+      int temp=stackArray[top--];
+      return temp; // access item, decrement top
+    }
+  }
+  public boolean isEmpty() // true if stack is empty
+  {
+    return (top == -1);
+  }
+  public boolean isFull() // true if stack is full
+  {
+    return (top == maxSize-1);
+  }
+}
+
+class Main
+{
+/* class CQStack{
+      public CQStack(int s) // constructor
+      public void push(int j) // put item on top of stack
+      public int pop() // take item from top of stack
+      public boolean isEmpty() // true if stack is empty
+      public boolean isFull() // true if stack is full
+    }
+	CQStack class already defined as per the above blueprint
+*/
+static String reverseString(CQStack s, String st)
+{
+String st1="";
+  for(int i=st.length()-1;i>=0;i--)
+  {
+    st1=st1+st.charAt(i);
+  }
+  return st1;
+}
+public static void main(String[] args)
+  {
+    CQStack theStack = new CQStack(100); // make new stack
+    Scanner s=new Scanner(System.in);
+    int t, n, q1, q2;
+    String st;
+    t = Integer.parseInt(s.nextLine().trim());
+    while(t>0)
+    {
+      theStack.top = -1;
+      n= Integer.parseInt(s.nextLine().trim());
+      while(n>0)
+      {
+        st = s.nextLine().trim();
+        st = reverseString(theStack, st);
+        System.out.println(st);
+        n--;
+      }
+      System.out.print("\n");
+      t--;
+    }
+  }
+}
