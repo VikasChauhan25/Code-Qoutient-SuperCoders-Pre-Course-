@@ -1,0 +1,55 @@
+#Kth smallest element in array
+Write a function findKSmallest() which accepts an array and an integer k and return the kth smallest element in the given array.
+
+Constraints: 1 <= array_size <= 50
+
+Input Format
+
+First Line will contain an integer N denoting the size of array.
+Second line contains N integers separated by space as elements of array.
+Third line contains an integer k.
+Output Format
+
+Print the kth smallest element.
+Sample Input
+
+5
+1 12 6 8 3
+3
+Sample Output
+
+6
+
+##Coding
+
+
+class Result
+{
+  static int findKSmallest(int arr[], int size, int k)
+  {
+ for(int i=0;i<size-1;i++)
+  {
+    for(int j=0;j<size-i-1;j++)
+    {
+      if(arr[j]>arr[j+1]){
+        int t=arr[j];
+      arr[j]=arr[j+1];
+      arr[j+1]=t;
+      }
+    }
+  }
+   if(size==0 || size==1)
+    return size;
+  int temp[]=new int[size];
+  int j=0;
+  for(int i=0;i<size-1;i++)
+  {
+		if(arr[i]!=arr[i+1])
+          temp[j++]=arr[i];
+  }
+  temp[j++]=arr[size-1];
+  for(int i=0;i<j;i++)
+    arr[i]=temp[i];
+  return arr[k-1];
+  }
+}
