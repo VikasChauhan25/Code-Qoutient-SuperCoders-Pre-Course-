@@ -1,0 +1,51 @@
+#Frequency of an element
+
+Input elements in array and find frequency of each element in array. Complete a given program to enter an array having n unique elements and find the frequency of each element in array.
+
+Sample Input
+
+5    // no of elements
+2
+1
+2
+3
+4
+Sample Output
+
+2 occurs 2 times
+1 occurs 1 times
+3 occurs 1 times
+4 occurs 1 times
+
+##Coding
+import java.util.Scanner;
+// Other imports go here
+// Do NOT change the class name
+class Main{
+    public static void main(String[] args)
+    {
+        // Write your code here
+      Scanner sc=new Scanner(System.in);
+      int n=sc.nextInt();
+      int arr[]=new int[n];
+      for(int i=0;i<n;i++)
+        arr[i]=sc.nextInt();
+      int c=0,k=0;
+      for(int i=0;i<n;i++)
+      {
+        c=0;
+        if(arr[i]!=-100){
+            k=arr[i];
+        for(int j=0;j<n;j++)
+        {
+          if(k==arr[j])
+          {
+            c++;
+            arr[j]=-100;
+          }
+        }
+          System.out.println(k+" occurs "+c+" times");
+      }
+      }
+    }
+}
