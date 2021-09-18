@@ -1,0 +1,68 @@
+
+
+#Check if strings are rotations or not
+
+Given two strings, find whether both are rotations of each other or not. For example,
+
+Given str1 = abacd and str2 = acdab, we can get str1 by rotating str2 and,
+
+Given str1 = coder and str2 = cored, we can not get str1 by rotating str2.
+
+﻿Input Format
+
+The first line of input contains an integer T denoting the no of test cases. Then T test cases follow. Each test case contains two strings str1 and str2. 
+Output Format
+
+For each test case, print YES or NO in new lines.
+Sample Input
+
+2
+abacd
+acdab
+coder
+cored
+Sample Output
+
+YES
+NO
+
+$$$Coding
+
+class Result
+{
+  // return 1 for YES and 0 for NO.
+  static int isRotation(String str1, String str2){
+    // Write your code here
+    if(str1==null || str2==null)
+      return 0;
+    if(str1.length()!=str2.length())
+      return 0;
+    		int n=str1.length();
+    		int m=str2.length();
+       	 	int lps[] = new int[n];
+        int len = 0;
+        int i = 1;
+        lps[0] = 0; 
+        while (i < n) {
+            if (str1.charAt(i) == str2.charAt(len)) {
+                lps[i] = ++len;
+                ++i;
+            }
+            else {
+                if (len == 0) {
+                    lps[i] = 0;
+                    ++i;
+                }
+                else {
+                    len = lps[len - 1];
+                }
+            }
+        }
+        i = 0;
+        for (int k = lps[n - 1]; k < m; ++k) {
+            if (str2.charAt(k) != str1.charAt(i++))
+                return 0;
+        }
+        return 1;
+  }
+}
