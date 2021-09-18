@@ -1,0 +1,4 @@
+#Introduction to Pointers
+  
+Download as PDF download
+Every variable in our program when stored in memory has assigned a particular memory location. Each memory location has an address assigned to it. It means every variable has been assigned a address in memory. Depending on size requirement of a variable the number of memory locations assigned to it i.e. if a variable needs 4 bytes and it has been assigned the address 1000 then from locations 1000 to 1003 will be assigned to it. Now we can access a variable with its name or its address also. Address of a variable is a hexadecimal number which can be assigned to another variable also. This concept of address assignment is used in C/C++ as pointer concept. This is useful in various ways in C/C++ programming, we will look at these cases shortly.
